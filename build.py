@@ -138,6 +138,8 @@ def main():
     t = t.replace("@@NS_EVENTS@@", "".join(ns_event(e) for e in live))
     t = t.replace("@@ASOF@@", f"{asof.year}년 {asof.month}월 {asof.day}일")
     (ROOT/"book-recommender.html").write_text(t, encoding="utf-8", newline="\n")
+    (ROOT/"docs").mkdir(exist_ok=True)  # GitHub Pages(/docs)용 사본
+    (ROOT/"docs/index.html").write_text(t, encoding="utf-8", newline="\n")
     print(f"빌드 완료: 책 {len(books)}권, 이벤트 {len(live)}건, {len(t.encode())//1024}KB")
 
 main()
