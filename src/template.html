@@ -178,6 +178,7 @@ textarea{min-height:76px;resize:vertical}
 .evs:has(#s-aladin:checked) .ev:not(.e-aladin){display:none}
 .evs:has(#s-yes24:checked) .ev:not(.e-yes24){display:none}
 .evs:has(#s-minum:checked) .ev:not(.e-minum){display:none}
+.evs:has(#s-kyobo:checked) .ev:not(.e-kyobo){display:none}
 .nsapp{--sE:0;--sI:1;--sS:0;--sN:1;--sT:1;--sF:0;--sJ:1;--sP:0}
 .nsapp .book{--hE:0;--hI:0;--hS:0;--hN:0;--hT:0;--hF:0;--hJ:0;--hP:0;--bb:0;order:calc(10000 - 100 * (var(--bb) + var(--hE) * (3 * var(--sE) - 1) + var(--hI) * (3 * var(--sI) - 1) + var(--hS) * (3 * var(--sS) - 1) + var(--hN) * (3 * var(--sN) - 1) + var(--hT) * (3 * var(--sT) - 1) + var(--hF) * (3 * var(--sF) - 1) + var(--hJ) * (3 * var(--sJ) - 1) + var(--hP) * (3 * var(--sP) - 1)) + var(--i))}
 .nsapp:has(#m-E:checked){--sE:1;--sI:0}
@@ -294,7 +295,7 @@ textarea{min-height:76px;resize:vertical}
   <div id="ns-best" style="margin-top:36px">@@NS_BEST@@</div>
   <div class="evs" id="ns-ev" style="margin-top:36px">
     <div class="sechead"><h3>이벤트 모음</h3><span class="status">마감 임박 순 · @@ASOF@@ 기준</span></div>
-    <div class="chips"><input class="vh" type="radio" name="src" id="s-all" checked><label class="chip" for="s-all">전체</label><input class="vh" type="radio" name="src" id="s-aladin"><label class="chip" for="s-aladin">알라딘</label><input class="vh" type="radio" name="src" id="s-yes24"><label class="chip" for="s-yes24">예스24</label><input class="vh" type="radio" name="src" id="s-minum"><label class="chip" for="s-minum">민음사</label></div>
+    <div class="chips"><input class="vh" type="radio" name="src" id="s-all" checked><label class="chip" for="s-all">전체</label><input class="vh" type="radio" name="src" id="s-aladin"><label class="chip" for="s-aladin">알라딘</label><input class="vh" type="radio" name="src" id="s-yes24"><label class="chip" for="s-yes24">예스24</label><input class="vh" type="radio" name="src" id="s-kyobo"><label class="chip" for="s-kyobo">교보문고</label><input class="vh" type="radio" name="src" id="s-minum"><label class="chip" for="s-minum">민음사</label></div>
     <div class="evlist">@@NS_EVENTS@@</div>
     <p class="note">혜택과 기간은 바뀔 수 있으니 참여 전에 원문을 확인하세요.</p>
   </div>
@@ -353,7 +354,7 @@ const BEST_ON=BEST_AGE<=28; /* 집계가 4주 넘게 지나면 점수에 반영�
 const BMAP={};
 BEST.sources.forEach(sr=>sr.items.forEach(([rank,t,a,p,shelf])=>{if(shelf)(BMAP[shelf]=BMAP[shelf]||[]).push({src:sr.name,rank})}));
 const bestPts=r=>r<=10?2:r<=30?1.5:1;
-const bestOf=title=>{const l=BMAP[title];return l?{pts:l.reduce((s,x)=>s+bestPts(x.rank),0),label:"주간 베스트 · "+l.map(x=>`${x.src} ${x.rank}위`).join(", ")}:null};
+const bestOf=title=>{const l=BMAP[title];return l?{pts:Math.min(4,l.reduce((s,x)=>s+bestPts(x.rank),0)),label:"주간 베스트 · "+l.map(x=>`${x.src} ${x.rank}위`).join(", ")}:null};
 function score(b,ref){
   let s=0;const why=[];
   const gm=b.g.filter(g=>S.genres.has(g));
@@ -423,6 +424,7 @@ $("evFilter").addEventListener("click",e=>{const b=e.target.closest("button");if
 let bestSrc=BEST.sources[0].name;
 function renderBest(){
   $("bestFilter").innerHTML=BEST.sources.map(sr=>`<button type="button" class="chip" data-s="${esc(sr.name)}" aria-pressed="${sr.name===bestSrc}">${esc(sr.name)}</button>`).join("");
+  $("bestFilter").hidden=BEST.sources.length<2;
   const sr=BEST.sources.find(x=>x.name===bestSrc)||BEST.sources[0];
   const items=sr.items.filter(i=>i[0]<=30);
   $("bestCount").textContent=`${sr.period} · 상위 ${items.length}종`;

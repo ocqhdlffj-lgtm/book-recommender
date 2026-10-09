@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-07",
+ "asOf": "2026-10-09",
  "events": [
   {
    "src": "알라딘",
@@ -168,6 +168,86 @@
    "start": "2020-01-14",
    "end": "",
    "url": "https://minumsa.com/event/32747/"
+  },
+  {
+   "src": "교보문고",
+   "title": "2026 노벨문학상 특별전",
+   "benefit": "올해의 수상작가 앤 카슨 특별전, 사은품 증정",
+   "start": "2026-10-08",
+   "end": "2026-11-30",
+   "url": "https://event.kyobobook.co.kr/detail/249495"
+  },
+  {
+   "src": "교보문고",
+   "title": "교보문고 X MBC <읽는 사람들> 3회차 방청 티켓 응모",
+   "benefit": "종이책 3만원 이상 구매하면 방청 티켓 응모 가능",
+   "start": "2026-09-09",
+   "end": "2026-10-13",
+   "url": "https://event.kyobobook.co.kr/detail/247513"
+  },
+  {
+   "src": "교보문고",
+   "title": "2026 교보문고 x PaTI 한글날 프로젝트",
+   "benefit": "행사 도서 구매 시 한글날 특별 굿즈 6종 중 선택",
+   "start": "2026-09-21",
+   "end": "2026-10-31",
+   "url": "https://event.kyobobook.co.kr/detail/249189"
+  },
+  {
+   "src": "교보문고",
+   "title": "책과 만나는 모든 곳에서 체크인하고, 챌린지까지!",
+   "benefit": "앱에서 매장 체크인 시 표지석 랜덤 경품 4종 · 2만원 추첨 증정",
+   "start": "2026-09-15",
+   "end": "2026-10-31",
+   "url": "https://event.kyobobook.co.kr/detail/248750"
+  },
+  {
+   "src": "교보문고",
+   "title": "교보갔다 가볼지도 2탄 대전·부산",
+   "benefit": "로컬 큐레이션 한정판 종이 지도 배포 · 기프트카드 증정 댓글 이벤트",
+   "start": "2026-09-17",
+   "end": "2026-10-31",
+   "url": "https://event.kyobobook.co.kr/detail/248709"
+  },
+  {
+   "src": "교보문고",
+   "title": "오디세이K 오픈 프로모션",
+   "benefit": "오디세이K 오픈 기념 프로모션(단독판매 상품, 세부 조건은 링크 확인)",
+   "start": "2026-09-28",
+   "end": "2026-10-31",
+   "url": "https://event.kyobobook.co.kr/detail/249284"
+  },
+  {
+   "src": "교보문고",
+   "title": "지친 숏폼요리 증후군",
+   "benefit": "요리 관련 기획 이벤트(세부 혜택은 링크 확인)",
+   "start": "2026-09-22",
+   "end": "2026-10-20",
+   "url": "https://event.kyobobook.co.kr/detail/249229"
+  },
+  {
+   "src": "교보문고",
+   "title": "교보eBook 한글날: 필사자랑대회 & 첫 글자 백일장",
+   "benefit": "한 달 내내 인기도서 100원 · 경품 증정",
+   "start": "2026-10-02",
+   "end": "2026-10-31",
+   "url": "https://event.kyobobook.co.kr/detail/249319"
+  },
+  {
+   "src": "교보문고",
+   "title": "오늘 곁에 두어 좋은 말",
+   "benefit": "오늘의 단어를 찾고 댓글을 남기면 1만원 e교환권 추첨 증정",
+   "start": "2026-10-01",
+   "end": "2026-12-31",
+   "url": "https://event.kyobobook.co.kr/detail/249468"
+  },
+  {
+   "src": "교보문고",
+   "title": "새로운 취향의 발견",
+   "benefit": "교보문고 기획 이벤트(세부 혜택은 링크 확인)",
+   "start": "2026-09-01",
+   "end": "2026-12-31",
+   "url": "https://event.kyobobook.co.kr/detail/248148"
   }
  ]
 }

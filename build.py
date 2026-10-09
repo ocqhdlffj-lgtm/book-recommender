@@ -13,7 +13,7 @@ GENRES = [("inmun","인문·철학"),("social","사회·정치"),("history","역
 GL = dict(GENRES)
 KDC = {"100":"철학","300":"사회과학","400":"자연과학","600":"예술","800":"문학","900":"역사"}
 LETTER = {"E":"대화거리가 되는 책","I":"혼자 깊게 파고드는 책","S":"사례와 사실이 단단한 책","N":"큰 그림과 관점을 주는 책","T":"논리와 구조가 선명한 책","F":"사람과 의미에 닿는 책","J":"완결된 체계를 갖춘 책","P":"낯선 시선을 열어주는 책"}
-SRC_KEY = {"알라딘":"aladin","예스24":"yes24","민음사":"minum"}
+SRC_KEY = {"알라딘":"aladin","예스24":"yes24","민음사":"minum","교보문고":"kyobo"}
 
 def load_books():
     books, seen = [], set()
@@ -68,7 +68,8 @@ def load_best(books):
             assert it[0] not in seen, f"bestsellers.json: {sr['name']} {it[0]}위 중복"
             seen.add(it[0])
             nt = _n(it[1])
-            hit = shelf.get(nt) or next((st for k, st in shelf.items() if len(k) >= 6 and k in nt), None)
+            head = _n(re.split(r"\s*:\s*", it[1])[0])  # "군주론 : 쇼츠 에디션" 같은 부제 제거
+            hit = shelf.get(nt) or shelf.get(head) or next((st for k, st in shelf.items() if len(k) >= 6 and k in nt), None)
             it.append(hit or "")
             if hit: bmap.setdefault(hit, []).append((sr["name"], it[0]))
     return d, bmap
@@ -80,7 +81,7 @@ def best_label(lst):
     return "주간 베스트 · " + ", ".join(f"{s} {r}위" for s, r in lst)
 
 def ns_best(d):
-    out = ['<div class="sechead"><h3>주간 베스트</h3><span class="status">서점별 상위 30위 · 서가에 있는 책은 표시돼요</span></div>']
+    out = ['<div class="sechead"><h3>주간 베스트</h3><span class="status">상위 30위 · 서가에 있는 책은 표시돼요</span></div>']
     for sr in d["sources"]:
         badge = '<span class="tag hit">서가에 있음</span> '
         rows = "".join(
@@ -95,7 +96,7 @@ def ns_book(i, b, g=None, bl=None):
     q = quote(b["t"])
     cls = " ".join(f"g-{g}" for g in b["g"]) + " " + " ".join(f"a-{l}" for l in b["af"])
     style = f"--i:{i};" + ";".join(f"--h{l}:1" for l in b["af"])
-    if bl: style += f";--bb:{round(sum(best_pts(r) for _, r in bl) / 1.5, 2)}"
+    if bl: style += f";--bb:{round(min(4, sum(best_pts(r) for _, r in bl)) / 1.5, 2)}"
     tags = "".join(f'<span class="tag">{GL[g]}</span>' for g in b["g"]) + \
            "".join(f'<span class="tag hit ctag c-{l}">{l} · {LETTER[l]}</span>' for l in b["af"]) + \
            (f'<span class="tag hit">{best_label(bl)}</span>' if bl else "")
