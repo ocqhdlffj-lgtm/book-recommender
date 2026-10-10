@@ -100,6 +100,7 @@ textarea{min-height:76px;resize:vertical}
 .gd .gsrc a{color:var(--accent)}
 .gd .weak{color:var(--warn)}
 .mno{color:var(--muted)}
+select{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:9px 11px}
 .chk{display:flex;gap:8px;align-items:center;font-weight:600;font-size:14px;cursor:pointer}
 .empty{border:1px dashed var(--line);border-radius:4px;padding:18px;color:var(--muted);font-size:14px}
 .err{color:var(--warn);font-size:13.5px}
@@ -228,11 +229,16 @@ textarea{min-height:76px;resize:vertical}
         </div>
         <div class="field">
           <label for="recent">최근 감명 깊게 읽은 책</label>
-          <input type="text" id="recent" placeholder="예: 공정하다는 착각">
+          <input type="text" id="recent" placeholder="예: 공정하다는 착각, 사피엔스">
+          <p class="hint">여러 권은 쉼표로 구분해요. 서가에 있는 책은 취향 분석에 쓰고 추천에서는 빼요.</p>
         </div>
         <div class="field">
           <label for="liked">어떤 점이 좋았나요? <span class="hint" style="display:inline">· 선택</span></label>
           <textarea id="liked" placeholder="예: 익숙한 생각을 뒤집는 논리, 사례가 많아서 좋았어요"></textarea>
+        </div>
+        <div class="field">
+          <label for="level">읽기 난이도</label>
+          <select id="level"><option value="any">상관없음</option><option value="1">가볍게 술술 읽히는 책</option><option value="2">보통 난이도</option><option value="3">도전적인 책</option></select>
         </div>
         <div class="field">
           <label class="chk"><input type="checkbox" id="millieOnly"> 밀리의서재 전자책으로 볼 수 있는 책만</label>
@@ -324,9 +330,9 @@ NF:["의미를 찾는 독자","책에서 사람과 가치를 찾습니다. 삶�
 ST:["사실을 쌓는 독자","검증된 사실과 쓸모를 중시합니다. 데이터와 사례가 풍부하고 바로 적용할 수 있는 책을 좋아합니다."],
 SF:["이야기에 머무는 독자","구체적인 장면과 인물에게 마음이 갑니다. 일상의 결이 살아 있는 소설과 에세이가 잘 맞습니다."]};
 
-const S={mbti:["I","N","T","J"],genres:new Set(["inmun","social"]),recent:"",liked:"",millie:false};
-try{const sv=JSON.parse(localStorage.getItem("seonghyang")||"null");if(sv){S.mbti=sv.mbti||S.mbti;S.genres=new Set(sv.genres||[]);S.recent=sv.recent||"";S.liked=sv.liked||"";S.millie=!!sv.millie}}catch(e){}
-const save=()=>{try{localStorage.setItem("seonghyang",JSON.stringify({mbti:S.mbti,genres:[...S.genres],recent:S.recent,liked:S.liked,millie:S.millie}))}catch(e){}};
+const S={mbti:["I","N","T","J"],genres:new Set(["inmun","social"]),recent:"",liked:"",millie:false,level:"any"};
+try{const sv=JSON.parse(localStorage.getItem("seonghyang")||"null");if(sv){S.mbti=sv.mbti||S.mbti;S.genres=new Set(sv.genres||[]);S.recent=sv.recent||"";S.liked=sv.liked||"";S.millie=!!sv.millie;S.level=sv.level||"any"}}catch(e){}
+const save=()=>{try{localStorage.setItem("seonghyang",JSON.stringify({mbti:S.mbti,genres:[...S.genres],recent:S.recent,liked:S.liked,millie:S.millie,level:S.level}))}catch(e){}};
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm=s=>String(s||"").replace(/[\s·.,!?'"《》「」『』<>]/g,"").toLowerCase();
@@ -350,9 +356,15 @@ function renderProfile(){
 }
 
 /* Scoring */
-function findRecent(){
-  const q=norm(S.recent);if(q.length<2)return null;
-  return BOOKS.find(b=>norm(b.t)===q)||BOOKS.find(b=>norm(b.t).includes(q)||q.includes(norm(b.t)))||null;
+/* ---------- 추천 로직 v2 ---------- */
+/* 읽은 책: 쉼표·줄바꿈으로 여러 권 입력 가능. 서가에 있으면 취향 프로필에 쓰고, 추천에서는 제외한다. */
+function findRefs(){
+  const parts=S.recent.split(/[,，、\n/]+/).map(s=>s.trim()).filter(s=>norm(s).length>=2);
+  const refs=[],unknown=[];
+  for(const p of parts){const q=norm(p);
+    const b=BOOKS.find(b=>norm(b.t)===q)||BOOKS.find(b=>norm(b.t).includes(q)||(norm(b.t).length>=4&&q.includes(norm(b.t))));
+    if(b){if(!refs.includes(b))refs.push(b)}else unknown.push(p)}
+  return{refs,unknown};
 }
 /* Weekly bestsellers: [rank,title,author,publisher,shelfTitle] — shelfTitle is matched in build.py */
 const BEST=/*@BEST*/{};
@@ -367,21 +379,58 @@ const MILLIE=/*@MILLIE*/{};
 const millieHtml=t=>{const m=MILLIE[t];if(!m||m.s==="unk")return"";
   const lab={ok:"밀리 "+(m.f||"전자책"),audio:"밀리 오디오북만",soon:"밀리 오픈 예정"}[m.s];
   return lab?`<a href="https://www.millie.co.kr/v4/book/${m.u}" target="_blank" rel="noopener" title="${esc(m.ed)}">${esc(lab)}</a>`:`<span class="mno" title="${esc(m.ed)}">밀리 미서비스</span>`};
-function score(b,ref){
-  let s=0;const why=[];
-  const gm=b.g.filter(g=>S.genres.has(g));
-  if(gm.length){s+=3+gm.length;why.push(`관심 분야 ${gm.map(g=>GL[g]).join("·")}`)}
-  const am=[...b.af].filter(l=>S.mbti.includes(l));
-  const opp=[...b.af].filter(l=>!S.mbti.includes(l)).length;s+=am.length*3-opp*1.5;
-  if(am.length)why.push(am.map(l=>LETTER[l]).slice(0,2).join(", "));
+/* 동의어 묶음: 좋았던 점 글에 쓴 말이 책 키워드와 표현만 달라도 닿게 한다 */
+const SYN=[["위로","힐링","따뜻","치유","공감","다정","온기"],["논리","논증","구조","분석","이성","체계"],["철학","사유","사색","성찰","인문"],["성장","변화","습관","자기계발","실행"],["사회","불평등","차별","정치","권력","공정"],["역사","문명","전쟁","기억"],["과학","우주","뇌","진화","물리"],["돈","투자","경제","부자","재테크"],["추리","반전","스릴러","미스터리","범죄"],["사랑","연애","이별","우정"],["상실","애도","슬픔","죽음","고통"],["미래","ai","기술","인공지능","디지털"],["자유","여행","일탈","고독"],["관계","대화","소통","가족","공동체"],["심리","감정","마음","불안","내면"]];
+const grpOf=w=>{const n=norm(w);return SYN.findIndex(g=>g.some(t=>n.includes(t)||(n.length>=2&&t.includes(n))))};
+const LEVELS={"쉬움":1,"보통":2,"어려움":3};
+const lvOf=t=>{const g=GUIDES[t];return g?LEVELS[g.lv]||0:0};
+const EASY=/(쉬운|쉽게|가벼운|가볍게|술술|얇은|짧은|부담\s*없)/,HARD=/(깊이|묵직|진지|어려운|도전|두꺼운|밀도)/;
+function wantLevel(){
+  if(S.level&&S.level!=="any")return{lv:+S.level,w:2,src:"선택"};
+  const t=S.liked||"";if(EASY.test(t)&&!HARD.test(t))return{lv:1,w:1.5,src:"글"};if(HARD.test(t)&&!EASY.test(t))return{lv:3,w:1.5,src:"글"};
+  return null;
+}
+const wa=t=>{const c=(t||'').trim().slice(-1).charCodeAt(0);return c>=0xAC00&&c<=0xD7A3&&(c-0xAC00)%28?'과':'와'}; /* 받침 유무로 와/과 */
+const eun=t=>{const c=(t||'').trim().slice(-1).charCodeAt(0);return c>=0xAC00&&c<=0xD7A3&&(c-0xAC00)%28?'은':'는'};
+const LV_LABEL={1:"가볍게 읽히는",2:"보통 난이도",3:"도전적인"};
+function profile(refs){ /* 읽은 책들에서 읽어낸 취향 */
+  const lvs=refs.map(r=>lvOf(r.t)).filter(Boolean);
+  return{avgLv:lvs.length?lvs.reduce((a,b)=>a+b,0)/lvs.length:0};
+}
+function score(b,refs,prof){
+  let s=0;const rs=[];const add=(p,t)=>{if(p>0.05){s+=p;rs.push({p,t})}};
+  /* 1) 관심 분야: 책의 주 분야(첫 번째)는 4점, 부 분야는 2점, 최대 6점 */
+  let gp=0;const gm=[];b.g.forEach((g,i)=>{if(S.genres.has(g)){gp+=i?2:4;gm.push(GL[g])}});
+  if(gm.length)add(Math.min(6,gp),`관심 분야 ${gm.join("·")}`);
+  /* 2) 성향: 글자 수가 많은 책이 유리하지 않도록 글자 수로 나눠 보정 */
+  const L=b.af.length,m=[...b.af].filter(l=>S.mbti.includes(l)),o=L-m.length;
+  const aff=7*(m.length-0.5*o)/Math.max(L,2);
+  if(aff>0)add(aff,m.slice(0,2).map(l=>LETTER[l]).join(", "));else s+=aff;
+  /* 3) 읽은 책과의 유사도: 가장 닮은 책 하나를 크게, 나머지는 보태는 정도로 */
+  if(refs.length){
+    const sims=refs.map(r=>{const kw=b.kw.filter(k=>r.kw.includes(k));const gs=b.g.filter(g=>r.g.includes(g)).length;
+      return{r,kw,v:kw.length*2.5+gs*1.5+(b.k===r.k?0.8:0)+(b.a===r.a?3:0)}}).sort((x,y)=>y.v-x.v);
+    const tot=Math.min(10,sims[0].v+0.4*sims.slice(1).reduce((a,x)=>a+x.v,0));
+    const top=sims[0];
+    add(tot,top.kw.length?`『${top.r.t}』${wa(top.r.t)} 겹치는 주제: ${top.kw.join(", ")}`:(b.a===top.r.a?`『${top.r.t}』${wa(top.r.t)} 같은 저자`:`『${top.r.t}』${wa(top.r.t)} 비슷한 분야`));
+  }
+  /* 4) 좋았던 점: 직접 일치는 2.5점, 동의어로 닿으면 0.8점 */
   const liked=norm(S.liked);
-  const kwHits=b.kw.filter(k=>(ref&&ref.kw.includes(k))||(liked&&liked.includes(norm(k))));
-  if(ref){const gShare=b.g.filter(g=>ref.g.includes(g)).length;s+=gShare*1.5}
-  s+=kwHits.length*2.5;
-  if(kwHits.length)why.unshift(ref?`『${ref.t}』와 겹치는 주제: ${kwHits.join(", ")}`:`좋았던 점과 닿는 주제: ${kwHits.join(", ")}`);
-  const bo=BEST_ON&&bestOf(b.t);
-  if(bo){s+=bo.pts;why.push(bo.label)}
-  return{b,s,why,kwHits};
+  if(liked){
+    const lg=new Set(SYN.map((g,i)=>g.some(t=>liked.includes(t))?i:-1).filter(i=>i>=0));
+    const direct=b.kw.filter(k=>liked.includes(norm(k)));
+    const syn=b.kw.filter(k=>!direct.includes(k)&&lg.has(grpOf(k)));
+    add(Math.min(7.5,direct.length*2.5)+Math.min(2.4,syn.length*0.8),`좋았던 점과 닿는 주제: ${[...direct,...syn].slice(0,3).join(", ")}`);
+  }
+  /* 5) 읽기 난이도: 선택한 난이도, 없으면 글에서 읽은 뜻, 없으면 읽은 책의 평균 난이도를 약하게 */
+  const bl=lvOf(b.t);
+  if(bl){const wl=wantLevel();let d=null,w=0;
+    if(wl){d=Math.abs(bl-wl.lv);w=wl.w}else if(prof.avgLv){d=Math.abs(bl-Math.round(prof.avgLv));w=0.8}
+    if(d!==null){const p=(d===0?1:d===1?0:-1.25)*w;if(p>0)add(p,`${LV_LABEL[bl]} 책`);else s+=p}}
+  /* 6) 주간 베스트 */
+  const bo=BEST_ON&&bestOf(b.t);if(bo)add(bo.pts,bo.label);
+  rs.sort((x,y)=>y.p-x.p);
+  return{b,s,why:rs.map(r=>r.t)};
 }
 function bookCard(o,ai){
   const b=o.b, q=encodeURIComponent(b.t);
@@ -389,26 +438,36 @@ function bookCard(o,ai){
   <div class="bbody"><h4>${esc(b.t)}</h4><div class="meta">${esc(b.a)}${b.p?" · "+esc(b.p):""}</div>
   <p class="why">${esc(b.w)}</p>
   ${guideHtml(GUIDES[b.t])}
-  ${o.why&&o.why.length?`<div class="tags">${o.why.map((w,i)=>`<span class="tag${i===0&&o.kwHits&&o.kwHits.length?" hit":""}">${esc(w)}</span>`).join("")}</div>`:""}
+  ${o.why&&o.why.length?`<div class="tags">${o.why.slice(0,4).map((w,i)=>`<span class="tag${i===0?" hit":""}">${esc(w)}</span>`).join("")}<span class="tag" title="분야·성향·유사도·난이도·베스트를 합산한 점수">점수 ${o.s.toFixed(1)}</span></div>`:""}
   <div class="links"><a href="https://search.kyobobook.co.kr/search?keyword=${q}" target="_blank" rel="noopener">교보</a><a href="https://www.yes24.com/Product/Search?query=${q}" target="_blank" rel="noopener">예스24</a><a href="https://www.aladin.co.kr/search/wsearchresult.aspx?SearchWord=${q}" target="_blank" rel="noopener">알라딘</a>${millieHtml(b.t)}</div>
   </div></article>`;
 }
 function recommend(){
   renderProfile();save();
-  const ref=findRecent();
-  const ranked=BOOKS.filter(b=>b!==ref&&(!S.millie||(MILLIE[b.t]&&MILLIE[b.t].s==="ok"))).map(b=>score(b,ref)).sort((a,b)=>b.s-a.s||BOOKS.indexOf(a.b)-BOOKS.indexOf(b.b));
-  const perAuthor={},list=[];
-  for(const o of ranked){if(list.length>=8)break;if((perAuthor[o.b.a]=(perAuthor[o.b.a]||0)+1)<=2)list.push(o)} /* 같은 저자는 최대 2권 */
+  const {refs,unknown}=findRefs(),prof=profile(refs);
+  const pool=BOOKS.filter(b=>!refs.includes(b)&&(!S.millie||(MILLIE[b.t]&&MILLIE[b.t].s==="ok")));
+  const ranked=pool.map(b=>score(b,refs,prof)).sort((a,b)=>b.s-a.s||BOOKS.indexOf(a.b)-BOOKS.indexOf(b.b));
+  /* 다양성: 같은 저자는 최대 2권, 이미 뽑힌 분야·분류와 겹치면 감점해 가며 8권을 고른다 */
+  const perAuthor={},gCount={},kCount={},list=[];let cands=ranked.slice(0,60);
+  while(list.length<8&&cands.length){
+    let bi=-1,bv=-1e9;
+    cands.forEach((o,i)=>{if((perAuthor[o.b.a]||0)>=2)return;const v=o.s-1.2*(gCount[o.b.g[0]]||0)-0.5*(kCount[o.b.k]||0);if(v>bv){bv=v;bi=i}});
+    if(bi<0)break;const o=cands.splice(bi,1)[0];list.push(o);
+    perAuthor[o.b.a]=(perAuthor[o.b.a]||0)+1;gCount[o.b.g[0]]=(gCount[o.b.g[0]]||0)+1;kCount[o.b.k]=(kCount[o.b.k]||0)+1;
+  }
   $("books").innerHTML=list.map(o=>bookCard(o)).join("");
-  let st=`${S.millie?"밀리 전자책 "+ranked.length:BOOKS.length}권 서가에서 ${list.length}권`;
-  if(S.recent&&!ref)st+=` · 『${S.recent}』는 서가에 없어 성향과 분야로 골랐어요`;
-  if(ref)st+=` · 『${ref.t}』 기준`;
+  let st=`${S.millie?"밀리 전자책 "+pool.length:BOOKS.length}권 서가에서 ${list.length}권`;
+  if(refs.length)st+=` · ${refs.map(r=>"『"+r.t+"』").join("·")} 기준(추천에서는 제외)`;
+  if(unknown.length)st+=` · ${unknown.map(u=>"『"+u+"』"+eun(u)).join(" ")} 서가에 없어 반영하지 못했어요`;
+  const wl=wantLevel();if(wl)st+=` · 난이도 ${LV_LABEL[wl.lv]} 쪽`;
+  st+=" · 분야가 한쪽에 몰리지 않게 순서를 조정";
   $("shelfStatus").textContent=st;
 }
 $("form").addEventListener("submit",e=>{e.preventDefault();S.recent=$("recent").value.trim();S.liked=$("liked").value.trim();recommend()});
 $("recent").addEventListener("input",()=>{S.recent=$("recent").value.trim();save()});
 $("liked").addEventListener("input",()=>{S.liked=$("liked").value.trim();save()});
 $("millieOnly").addEventListener("change",()=>{S.millie=$("millieOnly").checked;recommend()});
+$("level").addEventListener("change",()=>{S.level=$("level").value;recommend()});
 
 
 /* Events */
@@ -460,7 +519,7 @@ document.querySelector("nav.tabs").addEventListener("click",e=>{const b=e.target
 if(location.hash==="#events")showTab("events");
 if(location.hash==="#best")showTab("best");
 
-$("recent").value=S.recent;$("liked").value=S.liked;$("millieOnly").checked=S.millie;
+$("recent").value=S.recent;$("liked").value=S.liked;$("millieOnly").checked=S.millie;$("level").value=S.level;
 if(!S.recent){$("recent").value="공정하다는 착각";S.recent="공정하다는 착각"}
 renderMbti();renderGenres();recommend();renderEvents();renderBest();
 document.documentElement.classList.add("js");
