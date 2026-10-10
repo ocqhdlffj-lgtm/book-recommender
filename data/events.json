@@ -31,7 +31,8 @@
    "benefit": "저자 사인 인쇄본, 출간 기념 강연회 초대",
    "start": "2026-10-06",
    "end": "",
-   "url": "https://www.aladin.co.kr/events/wevent_sub.aspx"
+   "url": "https://www.aladin.co.kr/events/wevent_sub.aspx",
+   "goods": true
   },
   {
    "src": "알라딘",
@@ -55,7 +56,8 @@
    "benefit": "노화 역행 4주 챌린지 플래너 증정",
    "start": "2026-10-06",
    "end": "2027-01-06",
-   "url": "https://www.aladin.co.kr/events/wevent_sub.aspx"
+   "url": "https://www.aladin.co.kr/events/wevent_sub.aspx",
+   "goods": true
   },
   {
    "src": "알라딘",
@@ -63,7 +65,8 @@
    "benefit": "한정판 캐리어 키링 증정",
    "start": "2026-10-06",
    "end": "2027-01-06",
-   "url": "https://www.aladin.co.kr/events/wevent_sub.aspx"
+   "url": "https://www.aladin.co.kr/events/wevent_sub.aspx",
+   "goods": true
   },
   {
    "src": "예스24",
@@ -79,7 +82,8 @@
    "benefit": "굿즈 이벤트",
    "start": "2026-10-06",
    "end": "2026-10-26",
-   "url": "https://event.yes24.com/"
+   "url": "https://event.yes24.com/",
+   "goods": true
   },
   {
    "src": "예스24",
@@ -87,7 +91,8 @@
    "benefit": "예약 구매 시 블랙 롱머그 증정",
    "start": "2026-09-29",
    "end": "2026-10-30",
-   "url": "https://event.yes24.com/"
+   "url": "https://event.yes24.com/",
+   "goods": true
   },
   {
    "src": "예스24",
@@ -175,7 +180,8 @@
    "benefit": "올해의 수상작가 앤 카슨 특별전, 사은품 증정",
    "start": "2026-10-08",
    "end": "2026-11-30",
-   "url": "https://event.kyobobook.co.kr/detail/249495"
+   "url": "https://event.kyobobook.co.kr/detail/249495",
+   "goods": true
   },
   {
    "src": "교보문고",
@@ -191,7 +197,8 @@
    "benefit": "행사 도서 구매 시 한글날 특별 굿즈 6종 중 선택",
    "start": "2026-09-21",
    "end": "2026-10-31",
-   "url": "https://event.kyobobook.co.kr/detail/249189"
+   "url": "https://event.kyobobook.co.kr/detail/249189",
+   "goods": true
   },
   {
    "src": "교보문고",
@@ -207,7 +214,8 @@
    "benefit": "로컬 큐레이션 한정판 종이 지도 배포 · 기프트카드 증정 댓글 이벤트",
    "start": "2026-09-17",
    "end": "2026-10-31",
-   "url": "https://event.kyobobook.co.kr/detail/248709"
+   "url": "https://event.kyobobook.co.kr/detail/248709",
+   "goods": true
   },
   {
    "src": "교보문고",
@@ -248,6 +256,195 @@
    "start": "2026-09-01",
    "end": "2026-12-31",
    "url": "https://event.kyobobook.co.kr/detail/248148"
+  },
+  {
+   "src": "알라딘",
+   "title": "11월 수능 완벽 마무리 · 행운 아크릴 북마크, 스트라이프 파우치",
+   "benefit": "사은품: 행운 아크릴 북마크(1만원 이상), 스트라이프 파우치(2만원 이상) (고등학교 참고서 구매 시, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316251",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "반려동물 사랑과 이별 · 작은 수호신 야광 스티커",
+   "benefit": "사은품: 야광 스티커 (대상도서 포함 국내도서 2만원 이상 구매 시, 마일리지 차감, 소진 시까지)",
+   "start": "2026-10-07",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316218",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "꼬마 복덩이들 카드스티커",
+   "benefit": "사은품: 카드스티커 1매 (대상도서 구매 시, 마일리지 차감, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316193",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "나, 정봄, 달라질 거야! · 사인 노트",
+   "benefit": "사은품: 사인 노트 (대상도서 구매 시, 마일리지 구매, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316152",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "테 아라로아, 나에게로 · 엽서+책갈피 세트",
+   "benefit": "사은품: 엽서+책갈피 세트 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316312",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "꽤 괜찮은 너머 · 투명 아크릴 책갈피",
+   "benefit": "사은품: 투명 아크릴 책갈피 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316287",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "비혼주의자였습니다만 쌍둥이 아빠 · 쌍둥이 책갈피",
+   "benefit": "사은품: 쌍둥이 책갈피 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316304",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "좋은 종목보다 좋은 판단 · 매수 전 10초 체크 카드",
+   "benefit": "사은품: 매수 전 10초 체크 카드 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316256",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "숲문해력: 숲에서 세상을 읽다 · 루페",
+   "benefit": "사은품: 루페(돋보기) (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316322",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "너의 강물을 따라 살아라 · 사인본+엽서+책갈피",
+   "benefit": "사은품: 사인본, 손그림 엽서, 필사 책갈피 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316306",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "영혼의 사춘기 · 패브릭 북커버",
+   "benefit": "사은품: 패브릭 북커버 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316156",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "현대지성 클래식 시리즈 · 5공 PU 다이어리",
+   "benefit": "사은품: 5공 PU 다이어리 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-08",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=315886",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "스토아 철학 삶의 태도 · 낙원 슬리퍼",
+   "benefit": "사은품: 낙원 슬리퍼 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-07",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316169",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "전지적 독자 시점 문고본 · 일러스트 데스크매트",
+   "benefit": "사은품: HABAN 일러스트 데스크매트 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-07",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316144",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "칵테일을 마시는 철학자들 · 완독 뱃지+카뮈 배지 세트",
+   "benefit": "사은품: 완독 뱃지, 알베르 카뮈 배지 세트 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-07",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316164",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "야무진 고양이는 오늘도 우울 12 · 키보드 덮개",
+   "benefit": "사은품: 키보드 덮개 (조건은 링크 확인)",
+   "start": "2026-10-07",
+   "end": "2026-12-31",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316155",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "2026 노벨문학상 앤 카슨 수상 기념",
+   "benefit": "2027 캘린더, 미니 북파우치 키링, 연록 끈갈피 증정",
+   "start": "2026-10-08",
+   "end": "2026-10-30",
+   "url": "https://event.yes24.com/template?EventNo=276871",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "이달의 책 10월",
+   "benefit": "제로퍼제로 손잡이 책가방 증정",
+   "start": "2026-10-01",
+   "end": "2026-10-31",
+   "url": "https://event.yes24.com/earlyReader?eventNo=276759",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "2027 다이어리·캘린더 구매 사은품",
+   "benefit": "금액별 선착순 사은품",
+   "start": "2026-09-28",
+   "end": "2027-01-31",
+   "url": "https://event.yes24.com/template?EventNo=276645",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "소설·시·에세이 가을 문학 저장소",
+   "benefit": "북슬리브, 사계절 북마크 증정",
+   "start": "2026-09-01",
+   "end": "2026-12-02",
+   "url": "https://event.yes24.com/template?EventNo=276022",
+   "goods": true
+  },
+  {
+   "src": "교보문고",
+   "title": "무라카미 하루키 신작 『가호』 출간 이벤트",
+   "benefit": "『가호』 포함 소설·시/에세이 3만원 이상 구매 시 '가호' 거울 키링 선택",
+   "start": "2026-09-29",
+   "end": "2026-10-31",
+   "url": "https://event.kyobobook.co.kr/detail/249325",
+   "goods": true
   }
  ]
 }

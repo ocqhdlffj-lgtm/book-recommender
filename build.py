@@ -13,6 +13,7 @@ GENRES = [("inmun","인문·철학"),("social","사회·정치"),("history","역
 GL = dict(GENRES)
 KDC = {"100":"철학","300":"사회과학","400":"자연과학","600":"예술","800":"문학","900":"역사"}
 LETTER = {"E":"대화거리가 되는 책","I":"혼자 깊게 파고드는 책","S":"사례와 사실이 단단한 책","N":"큰 그림과 관점을 주는 책","T":"논리와 구조가 선명한 책","F":"사람과 의미에 닿는 책","J":"완결된 체계를 갖춘 책","P":"낯선 시선을 열어주는 책"}
+GOODS_TAG = "<span class=\"tag hit\">굿즈</span> "
 SRC_KEY = {"알라딘":"aladin","예스24":"yes24","민음사":"minum","교보문고":"kyobo"}
 
 def load_books():
@@ -92,7 +93,27 @@ def ns_best(d):
         out.append(f'<p class="status" style="margin:14px 0 0"><b>{sr["name"]}</b> · {sr["period"]}</p><div class="evlist">{rows}</div>')
     return "".join(out)
 
-def ns_book(i, b, g=None, bl=None):
+def load_millie(books):
+    d = json.loads((ROOT/"data/millie.json").read_text(encoding="utf-8"))
+    titles = {b["t"] for b in books}
+    for t, m in d["books"].items():
+        assert t in titles, f"millie.json: books.txt에 없는 책 '{t}'"
+        assert m["s"] in ("ok", "audio", "soon", "no", "unk"), f"millie.json: {t} 상태 오류"
+        assert m["s"] in ("no", "unk") or m.get("u"), f"millie.json: {t} 주소 없음"
+    return d
+
+def millie_html(m):
+    if not m or m["s"] == "unk": return ""
+    t = escape(m["ed"])
+    if m["s"] == "ok":
+        return f'<a href="https://www.millie.co.kr/v4/book/{m["u"]}" title="{t}">밀리 {m["f"]}</a>'
+    if m["s"] == "audio":
+        return f'<a href="https://www.millie.co.kr/v4/book/{m["u"]}" title="{t}">밀리 오디오북만</a>'
+    if m["s"] == "soon":
+        return f'<a href="https://www.millie.co.kr/v4/book/{m["u"]}" title="{t}">밀리 오픈 예정</a>'
+    return f'<span class="mno" title="{t}">밀리 미서비스</span>'
+
+def ns_book(i, b, g=None, bl=None, ml=None):
     q = quote(b["t"])
     cls = " ".join(f"g-{g}" for g in b["g"]) + " " + " ".join(f"a-{l}" for l in b["af"])
     style = f"--i:{i};" + ";".join(f"--h{l}:1" for l in b["af"])
@@ -105,19 +126,20 @@ def ns_book(i, b, g=None, bl=None):
             f'<p class="why">{escape(b["w"])}</p>{guide_html(g)}<div class="tags">{tags}</div>'
             f'<div class="links"><a href="https://search.kyobobook.co.kr/search?keyword={q}">교보</a>'
             f'<a href="https://www.yes24.com/Product/Search?query={q}">예스24</a>'
-            f'<a href="https://www.aladin.co.kr/search/wsearchresult.aspx?SearchWord={q}">알라딘</a></div></div></article>')
+            f'<a href="https://www.aladin.co.kr/search/wsearchresult.aspx?SearchWord={q}">알라딘</a>{millie_html(ml)}</div></div></article>')
 
 def ns_event(e):
     key = SRC_KEY[e["src"]]
     due = ('<div class="due long"><small>상시</small><b>—</b></div>' if not e["end"]
            else f'<div class="due"><small>마감</small><b>~{e["end"][5:].replace("-",".")}</b></div>')
-    return (f'<div class="ev e-{key}">{due}<div><h4><span class="src">{e["src"]}</span>{escape(e["title"])}</h4>'
+    return (f'<div class="ev e-{key}{" e-goods" if e.get("goods") else ""}">{due}<div><h4><span class="src">{e["src"]}</span>{GOODS_TAG if e.get("goods") else ""}{escape(e["title"])}</h4>'
             f'<p>{escape(e["benefit"])}</p></div><a class="go" href="{e["url"]}">이벤트 보기 →</a></div>')
 
 def main():
     books = load_books()
     guides = load_guides(books)
     best, bmap = load_best(books)
+    millie = load_millie(books)
     ev =json.loads((ROOT/"data/events.json").read_text(encoding="utf-8"))
     asof = datetime.date.fromisoformat(ev["asOf"])
     for e in ev["events"]: assert e["src"] in SRC_KEY, f"이벤트 출처 '{e['src']}' 미등록 (build.py SRC_KEY + 템플릿 칩 추가 필요)"
@@ -129,13 +151,14 @@ def main():
         print(f"OK 책 {len(books)}권 · 가이드 {len(guides)}권 · 이벤트 {len(ev['events'])}건 (표시 {len(live)}건)"); return
     t = (ROOT/"src/template.html").read_text(encoding="utf-8")
     t = t.replace("/*@BOOKS*/", "\n".join(b["raw"] for b in books))
-    evjs = "\n".join(json.dumps([e["src"],e["title"],e["benefit"],e["start"],e["end"],e["url"]], ensure_ascii=False, separators=(",",":"))+"," for e in ev["events"])
+    evjs = "\n".join(json.dumps([e["src"],e["title"],e["benefit"],e["start"],e["end"],e["url"],1 if e.get("goods") else 0], ensure_ascii=False, separators=(",",":"))+"," for e in ev["events"])
     t = t.replace("/*@EVENTS*/[\n", "[\n" + evjs.rstrip(",") + "\n")
     t = t.replace("/*@GUIDES*/", "\n".join(g["raw"] for g in guides.values()))
     t = t.replace("/*@BEST*/{}", json.dumps({"asOf": best["asOf"], "sources": [{"name": s["name"], "period": s["period"], "items": s["items"]} for s in best["sources"]]}, ensure_ascii=False, separators=(",", ":")))
     t = t.replace("@@NS_BEST@@", ns_best(best))
     t = t.replace("@@BEST_NOTE@@", escape(best["note"]))
-    t = t.replace("@@NS_BOOKS@@", "".join(ns_book(i,b,guides.get(b["t"]),bmap.get(b["t"])) for i,b in enumerate(books)))
+    t = t.replace("/*@MILLIE*/{}", json.dumps(millie["books"], ensure_ascii=False, separators=(",", ":")))
+    t = t.replace("@@NS_BOOKS@@", "".join(ns_book(i,b,guides.get(b["t"]),bmap.get(b["t"]),millie["books"].get(b["t"])) for i,b in enumerate(books)))
     t = t.replace("@@NS_EVENTS@@", "".join(ns_event(e) for e in live))
     t = t.replace("@@ASOF@@", f"{asof.year}년 {asof.month}월 {asof.day}일")
     (ROOT/"book-recommender.html").write_text(t, encoding="utf-8", newline="\n")

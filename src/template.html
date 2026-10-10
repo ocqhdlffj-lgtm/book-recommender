@@ -99,6 +99,8 @@ textarea{min-height:76px;resize:vertical}
 .gd .gsrc{font-size:12px;color:var(--muted)}
 .gd .gsrc a{color:var(--accent)}
 .gd .weak{color:var(--warn)}
+.mno{color:var(--muted)}
+.chk{display:flex;gap:8px;align-items:center;font-weight:600;font-size:14px;cursor:pointer}
 .empty{border:1px dashed var(--line);border-radius:4px;padding:18px;color:var(--muted);font-size:14px}
 .err{color:var(--warn);font-size:13.5px}
 
@@ -179,6 +181,7 @@ textarea{min-height:76px;resize:vertical}
 .evs:has(#s-yes24:checked) .ev:not(.e-yes24){display:none}
 .evs:has(#s-minum:checked) .ev:not(.e-minum){display:none}
 .evs:has(#s-kyobo:checked) .ev:not(.e-kyobo){display:none}
+.evs:has(#s-goods:checked) .ev:not(.e-goods){display:none}
 .nsapp{--sE:0;--sI:1;--sS:0;--sN:1;--sT:1;--sF:0;--sJ:1;--sP:0}
 .nsapp .book{--hE:0;--hI:0;--hS:0;--hN:0;--hT:0;--hF:0;--hJ:0;--hP:0;--bb:0;order:calc(10000 - 100 * (var(--bb) + var(--hE) * (3 * var(--sE) - 1) + var(--hI) * (3 * var(--sI) - 1) + var(--hS) * (3 * var(--sS) - 1) + var(--hN) * (3 * var(--sN) - 1) + var(--hT) * (3 * var(--sT) - 1) + var(--hF) * (3 * var(--sF) - 1) + var(--hJ) * (3 * var(--sJ) - 1) + var(--hP) * (3 * var(--sP) - 1)) + var(--i))}
 .nsapp:has(#m-E:checked){--sE:1;--sI:0}
@@ -230,6 +233,10 @@ textarea{min-height:76px;resize:vertical}
         <div class="field">
           <label for="liked">어떤 점이 좋았나요? <span class="hint" style="display:inline">· 선택</span></label>
           <textarea id="liked" placeholder="예: 익숙한 생각을 뒤집는 논리, 사례가 많아서 좋았어요"></textarea>
+        </div>
+        <div class="field">
+          <label class="chk"><input type="checkbox" id="millieOnly"> 밀리의서재 전자책으로 볼 수 있는 책만</label>
+          <p class="hint">밀리에서 지금 서비스 중인 전자책만 추천해요. 판본은 서가와 다를 수 있어요.</p>
         </div>
         <div class="actions">
           <button class="btn" type="submit" id="go">서가에서 찾기</button>
@@ -295,7 +302,7 @@ textarea{min-height:76px;resize:vertical}
   <div id="ns-best" style="margin-top:36px">@@NS_BEST@@</div>
   <div class="evs" id="ns-ev" style="margin-top:36px">
     <div class="sechead"><h3>이벤트 모음</h3><span class="status">마감 임박 순 · @@ASOF@@ 기준</span></div>
-    <div class="chips"><input class="vh" type="radio" name="src" id="s-all" checked><label class="chip" for="s-all">전체</label><input class="vh" type="radio" name="src" id="s-aladin"><label class="chip" for="s-aladin">알라딘</label><input class="vh" type="radio" name="src" id="s-yes24"><label class="chip" for="s-yes24">예스24</label><input class="vh" type="radio" name="src" id="s-kyobo"><label class="chip" for="s-kyobo">교보문고</label><input class="vh" type="radio" name="src" id="s-minum"><label class="chip" for="s-minum">민음사</label></div>
+    <div class="chips"><input class="vh" type="radio" name="src" id="s-all" checked><label class="chip" for="s-all">전체</label><input class="vh" type="radio" name="src" id="s-goods"><label class="chip" for="s-goods">굿즈·사은품</label><input class="vh" type="radio" name="src" id="s-aladin"><label class="chip" for="s-aladin">알라딘</label><input class="vh" type="radio" name="src" id="s-yes24"><label class="chip" for="s-yes24">예스24</label><input class="vh" type="radio" name="src" id="s-kyobo"><label class="chip" for="s-kyobo">교보문고</label><input class="vh" type="radio" name="src" id="s-minum"><label class="chip" for="s-minum">민음사</label></div>
     <div class="evlist">@@NS_EVENTS@@</div>
     <p class="note">혜택과 기간은 바뀔 수 있으니 참여 전에 원문을 확인하세요.</p>
   </div>
@@ -317,9 +324,9 @@ NF:["의미를 찾는 독자","책에서 사람과 가치를 찾습니다. 삶�
 ST:["사실을 쌓는 독자","검증된 사실과 쓸모를 중시합니다. 데이터와 사례가 풍부하고 바로 적용할 수 있는 책을 좋아합니다."],
 SF:["이야기에 머무는 독자","구체적인 장면과 인물에게 마음이 갑니다. 일상의 결이 살아 있는 소설과 에세이가 잘 맞습니다."]};
 
-const S={mbti:["I","N","T","J"],genres:new Set(["inmun","social"]),recent:"",liked:""};
-try{const sv=JSON.parse(localStorage.getItem("seonghyang")||"null");if(sv){S.mbti=sv.mbti||S.mbti;S.genres=new Set(sv.genres||[]);S.recent=sv.recent||"";S.liked=sv.liked||""}}catch(e){}
-const save=()=>{try{localStorage.setItem("seonghyang",JSON.stringify({mbti:S.mbti,genres:[...S.genres],recent:S.recent,liked:S.liked}))}catch(e){}};
+const S={mbti:["I","N","T","J"],genres:new Set(["inmun","social"]),recent:"",liked:"",millie:false};
+try{const sv=JSON.parse(localStorage.getItem("seonghyang")||"null");if(sv){S.mbti=sv.mbti||S.mbti;S.genres=new Set(sv.genres||[]);S.recent=sv.recent||"";S.liked=sv.liked||"";S.millie=!!sv.millie}}catch(e){}
+const save=()=>{try{localStorage.setItem("seonghyang",JSON.stringify({mbti:S.mbti,genres:[...S.genres],recent:S.recent,liked:S.liked,millie:S.millie}))}catch(e){}};
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm=s=>String(s||"").replace(/[\s·.,!?'"《》「」『』<>]/g,"").toLowerCase();
@@ -355,6 +362,11 @@ const BMAP={};
 BEST.sources.forEach(sr=>sr.items.forEach(([rank,t,a,p,shelf])=>{if(shelf)(BMAP[shelf]=BMAP[shelf]||[]).push({src:sr.name,rank})}));
 const bestPts=r=>r<=10?2:r<=30?1.5:1;
 const bestOf=title=>{const l=BMAP[title];return l?{pts:Math.min(4,l.reduce((s,x)=>s+bestPts(x.rank),0)),label:"주간 베스트 · "+l.map(x=>`${x.src} ${x.rank}위`).join(", ")}:null};
+/* 밀리의서재: 책 페이지에서 확인한 전자책 서비스 상태 (s: ok/no/unk) */
+const MILLIE=/*@MILLIE*/{};
+const millieHtml=t=>{const m=MILLIE[t];if(!m||m.s==="unk")return"";
+  const lab={ok:"밀리 "+(m.f||"전자책"),audio:"밀리 오디오북만",soon:"밀리 오픈 예정"}[m.s];
+  return lab?`<a href="https://www.millie.co.kr/v4/book/${m.u}" target="_blank" rel="noopener" title="${esc(m.ed)}">${esc(lab)}</a>`:`<span class="mno" title="${esc(m.ed)}">밀리 미서비스</span>`};
 function score(b,ref){
   let s=0;const why=[];
   const gm=b.g.filter(g=>S.genres.has(g));
@@ -378,17 +390,17 @@ function bookCard(o,ai){
   <p class="why">${esc(b.w)}</p>
   ${guideHtml(GUIDES[b.t])}
   ${o.why&&o.why.length?`<div class="tags">${o.why.map((w,i)=>`<span class="tag${i===0&&o.kwHits&&o.kwHits.length?" hit":""}">${esc(w)}</span>`).join("")}</div>`:""}
-  <div class="links"><a href="https://search.kyobobook.co.kr/search?keyword=${q}" target="_blank" rel="noopener">교보</a><a href="https://www.yes24.com/Product/Search?query=${q}" target="_blank" rel="noopener">예스24</a><a href="https://www.aladin.co.kr/search/wsearchresult.aspx?SearchWord=${q}" target="_blank" rel="noopener">알라딘</a></div>
+  <div class="links"><a href="https://search.kyobobook.co.kr/search?keyword=${q}" target="_blank" rel="noopener">교보</a><a href="https://www.yes24.com/Product/Search?query=${q}" target="_blank" rel="noopener">예스24</a><a href="https://www.aladin.co.kr/search/wsearchresult.aspx?SearchWord=${q}" target="_blank" rel="noopener">알라딘</a>${millieHtml(b.t)}</div>
   </div></article>`;
 }
 function recommend(){
   renderProfile();save();
   const ref=findRecent();
-  const ranked=BOOKS.filter(b=>b!==ref).map(b=>score(b,ref)).sort((a,b)=>b.s-a.s||BOOKS.indexOf(a.b)-BOOKS.indexOf(b.b));
+  const ranked=BOOKS.filter(b=>b!==ref&&(!S.millie||(MILLIE[b.t]&&MILLIE[b.t].s==="ok"))).map(b=>score(b,ref)).sort((a,b)=>b.s-a.s||BOOKS.indexOf(a.b)-BOOKS.indexOf(b.b));
   const perAuthor={},list=[];
   for(const o of ranked){if(list.length>=8)break;if((perAuthor[o.b.a]=(perAuthor[o.b.a]||0)+1)<=2)list.push(o)} /* 같은 저자는 최대 2권 */
   $("books").innerHTML=list.map(o=>bookCard(o)).join("");
-  let st=`${BOOKS.length}권 서가에서 ${list.length}권`;
+  let st=`${S.millie?"밀리 전자책 "+ranked.length:BOOKS.length}권 서가에서 ${list.length}권`;
   if(S.recent&&!ref)st+=` · 『${S.recent}』는 서가에 없어 성향과 분야로 골랐어요`;
   if(ref)st+=` · 『${ref.t}』 기준`;
   $("shelfStatus").textContent=st;
@@ -396,18 +408,19 @@ function recommend(){
 $("form").addEventListener("submit",e=>{e.preventDefault();S.recent=$("recent").value.trim();S.liked=$("liked").value.trim();recommend()});
 $("recent").addEventListener("input",()=>{S.recent=$("recent").value.trim();save()});
 $("liked").addEventListener("input",()=>{S.liked=$("liked").value.trim();save()});
+$("millieOnly").addEventListener("change",()=>{S.millie=$("millieOnly").checked;recommend()});
 
 
 /* Events */
 const EVENTS=/*@EVENTS*/[
-].map(([src,title,benefit,start,end,url])=>({src,title,benefit,start,end,url}));
-const SRCS=["전체",...new Set(EVENTS.map(e=>e.src))];
+].map(([src,title,benefit,start,end,url,goods])=>({src,title,benefit,start,end,url,goods:!!goods}));
+const SRCS=["전체","굿즈·사은품",...new Set(EVENTS.map(e=>e.src))];
 let evSrc="전체";
 try{evSrc=localStorage.getItem("seonghyang-ev")||"전체"}catch(e){}
 function dday(end){if(!end)return null;const t=new Date();t.setHours(0,0,0,0);return Math.round((new Date(end+"T00:00:00")-t)/864e5)}
 function renderEvents(){
   $("evFilter").innerHTML=SRCS.map(s=>`<button type="button" class="chip" data-s="${s}" aria-pressed="${s===evSrc}">${s}</button>`).join("");
-  const list=EVENTS.filter(e=>evSrc==="전체"||e.src===evSrc).map(e=>({...e,d:dday(e.end)})).filter(e=>e.d===null||e.d>=0)
+  const list=EVENTS.filter(e=>evSrc==="전체"||(evSrc==="굿즈·사은품"?e.goods:e.src===evSrc)).map(e=>({...e,d:dday(e.end)})).filter(e=>e.d===null||e.d>=0)
     .sort((a,b)=>(a.d??9999)-(b.d??9999));
   $("evCount").textContent=`진행 중 ${list.length}건 · 마감 임박 순`;
   $("evList").innerHTML=list.map(e=>{
@@ -415,7 +428,7 @@ function renderEvents(){
     const cls=e.d!==null&&e.d<=7?"soon":(e.d===null||e.d>60?"long":"");
     const label=e.d===null?"기한 없음":e.d===0?"오늘 마감":`D-${e.d}`;
     return `<div class="ev"><div class="due ${cls}"><small>${label}</small><b>~${md}</b></div>
-    <div><h4><span class="src">${esc(e.src)}</span>${esc(e.title)}</h4><p>${esc(e.benefit)}</p></div>
+    <div><h4><span class="src">${esc(e.src)}</span>${e.goods?`<span class="tag hit">굿즈</span> `:""}${esc(e.title)}</h4><p>${esc(e.benefit)}</p></div>
     <a class="go" href="${e.url}" target="_blank" rel="noopener">이벤트 보기 →</a></div>`}).join("")||`<div class="empty">진행 중인 이벤트가 없어요.</div>`;
 }
 $("evFilter").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;evSrc=b.dataset.s;try{localStorage.setItem("seonghyang-ev",evSrc)}catch(_){}renderEvents()});
@@ -447,7 +460,7 @@ document.querySelector("nav.tabs").addEventListener("click",e=>{const b=e.target
 if(location.hash==="#events")showTab("events");
 if(location.hash==="#best")showTab("best");
 
-$("recent").value=S.recent;$("liked").value=S.liked;
+$("recent").value=S.recent;$("liked").value=S.liked;$("millieOnly").checked=S.millie;
 if(!S.recent){$("recent").value="공정하다는 착각";S.recent="공정하다는 착각"}
 renderMbti();renderGenres();recommend();renderEvents();renderBest();
 document.documentElement.classList.add("js");
