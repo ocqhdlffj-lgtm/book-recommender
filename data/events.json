@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-09",
+ "asOf": "2026-10-21",
  "events": [
   {
    "src": "알라딘",
@@ -445,6 +445,428 @@
    "end": "2026-10-31",
    "url": "https://event.kyobobook.co.kr/detail/249325",
    "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "무라카미 하루키 문학 퀴즈대회",
+   "benefit": "문학 퀴즈 참여 이벤트(경품·발표 일정은 링크 확인)",
+   "start": "2026-10-21",
+   "end": "2026-11-25",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316510"
+  },
+  {
+   "src": "알라딘",
+   "title": "시드니 스미스·케이트 비턴 독자와의 문답 + 『레베카』 바닥 그림 유리 머그",
+   "benefit": "사은품: 유리 머그 (조건은 링크 확인, 소진 시까지)",
+   "start": "2026-10-21",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316672",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "퀴즈 맞히고 소설·시·에세이 분야 전용 깜짝 적립금",
+   "benefit": "퀴즈 참여 시 소설·시·에세이 분야 전용 적립금",
+   "start": "2026-10-21",
+   "end": "2026-10-22",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316864"
+  },
+  {
+   "src": "알라딘",
+   "title": "『시추에이티드』 + 한정판 저자 메시지 사인 인쇄본·슬로건 스티커·패브릭 책갈피",
+   "benefit": "사은품: 저자 메시지 사인 인쇄본, 슬로건 스티커, 패브릭 책갈피 (마일리지 차감, 소진 시까지)",
+   "start": "2026-10-21",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316872",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『공기뿌리』 + 아크릴 더블 키링",
+   "benefit": "사은품: 아크릴 더블 키링 (조건은 링크 확인)",
+   "start": "2026-10-21",
+   "end": "2027-01-21",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316871",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "입사 안내 키트 (임명장·연구원장 서한·이상현상 발생 현황도 등)",
+   "benefit": "사은품: 입사 안내 키트 — 임명장, 연구원장 서한, 조직도, 인사기록, 대한민국 이상현상 발생 현황도, 명함 (소진 시까지)",
+   "start": "2026-10-21",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316858",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "[나도 서점 주인] 조예은의 서점",
+   "benefit": "작가가 꾸린 서점 기획전",
+   "start": "2026-10-20",
+   "end": "2026-12-31",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=310852"
+  },
+  {
+   "src": "알라딘",
+   "title": "『항밈학과 같은 건 없습니다』 + 항밈학과 키카드 키링",
+   "benefit": "사은품: 키카드 키링 (조건은 링크 확인)",
+   "start": "2026-10-20",
+   "end": "2026-12-31",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316816",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『혼자 살기 워크숍』 출간 기념 반유화×김아영 북토크",
+   "benefit": "11월 11일(수) 오후 7시 30분 북토크 참여 신청",
+   "start": "2026-10-20",
+   "end": "2026-11-06",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316838"
+  },
+  {
+   "src": "알라딘",
+   "title": "『마흔에 읽는 전도서』 + 메가MGC커피 더블 아아 세트 모바일쿠폰 추첨",
+   "benefit": "커피 모바일쿠폰 추첨, 12월 18일 발표",
+   "start": "2026-10-20",
+   "end": "2026-12-13",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316744"
+  },
+  {
+   "src": "알라딘",
+   "title": "『멍키럽』 로버트 M. 새폴스키 신간 알림·기대평 + 1천원 적립금",
+   "benefit": "추첨으로 적립금 1천 원, 10월 27일 발표",
+   "start": "2026-10-20",
+   "end": "2026-10-26",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316819"
+  },
+  {
+   "src": "알라딘",
+   "title": "『뜨개질하는 할머니가 되고 싶어』 + 작가 제작 뜨개 굿즈",
+   "benefit": "사은품: 작가가 직접 만든 뜨개 굿즈, 친필 메시지 랜덤 삽지 (소진 시까지)",
+   "start": "2026-10-20",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316805",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『매일 쓰는 문장이 나를 만든다』 + 책읽기 자",
+   "benefit": "사은품: 책읽기 자 (소진 시까지)",
+   "start": "2026-10-20",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316825",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『먼나라 이웃나라』 + 장바구니 키링",
+   "benefit": "사은품: 장바구니 키링 (먼나라 1권 포함 국내서 3만 원 이상)",
+   "start": "2026-10-20",
+   "end": "2027-01-19",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316790",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『사랑 신드롬』 + PVC 투명 파우치",
+   "benefit": "사은품: PVC 투명 파우치 (조건은 링크 확인)",
+   "start": "2026-10-20",
+   "end": "2027-01-20",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316788",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『안개 속 달빛서점』 + 낮잠 작가 친필 사인본",
+   "benefit": "작가 친필 사인본 증정",
+   "start": "2026-10-20",
+   "end": "2026-11-27",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316865"
+  },
+  {
+   "src": "알라딘",
+   "title": "『알고리즘 불복종』 + 불복종 키캡 키링",
+   "benefit": "사은품: 키캡 키링 (소진 시까지)",
+   "start": "2026-10-20",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316855",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『마음의 어휘력』 + 네잎클로버 키캡 키링",
+   "benefit": "사은품: 네잎클로버 키캡 키링 (소진 시까지)",
+   "start": "2026-10-20",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316771",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『지금, 만화』 31호 + 실리콘 텀블러",
+   "benefit": "사은품: 실리콘 텀블러 (조건은 링크 확인)",
+   "start": "2026-10-20",
+   "end": "2026-12-31",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316703",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『위대한 예술가는 무엇을 훔쳤을까』 기대평 + 2천원 적립금",
+   "benefit": "추첨으로 적립금 2천 원, 11월 16일 발표",
+   "start": "2026-10-20",
+   "end": "2026-11-15",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316689"
+  },
+  {
+   "src": "알라딘",
+   "title": "『오늘의 기세』 이현 작가 신간 알림 + 1천원 적립금",
+   "benefit": "추첨으로 적립금 1천 원, 10월 26일 발표",
+   "start": "2026-10-19",
+   "end": "2026-10-25",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316629"
+  },
+  {
+   "src": "알라딘",
+   "title": "『미술관에 간 할미 II』 + 대형 순면 패브릭 또는 미술관 티켓 책갈피",
+   "benefit": "사은품: 다용도 대형 순면 패브릭(택1) 또는 랜덤 미술관 티켓 책갈피 (소진 시까지)",
+   "start": "2026-10-19",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316640",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『정신병동에도 아침이 와요』 시리즈 + 뮤지컬 VIP석 티켓 추첨",
+   "benefit": "뮤지컬 VIP석 티켓 추첨, 10월 29일 발표",
+   "start": "2026-10-19",
+   "end": "2026-10-28",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316746"
+  },
+  {
+   "src": "알라딘",
+   "title": "[북펀드] 백석 평전 + 나와 나타샤와 흰 당나귀",
+   "benefit": "북펀드 참여",
+   "start": "2026-10-19",
+   "end": "2026-11-09",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316644"
+  },
+  {
+   "src": "알라딘",
+   "title": "[북펀드] 우리는 투명노동자입니다",
+   "benefit": "북펀드 참여",
+   "start": "2026-10-19",
+   "end": "2026-10-31",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316626"
+  },
+  {
+   "src": "알라딘",
+   "title": "『웨일 폴: 고래에 먹힌 남자』 기대평 + 영화 예매권 추첨",
+   "benefit": "영화 예매권 추첨, 10월 26일 발표",
+   "start": "2026-10-16",
+   "end": "2026-10-25",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316620"
+  },
+  {
+   "src": "알라딘",
+   "title": "'창비의 첫' 김애란·황정은·김금희 첫 장편소설 + '일기쁨' 핸드 타월",
+   "benefit": "사은품: '일기쁨' 핸드 타월 (소진 시까지)",
+   "start": "2026-10-16",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316698",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『내가 크고 있는지 궁금해』 존 클라센 신간 알림 + 1천원 적립금",
+   "benefit": "추첨으로 적립금 1천 원, 11월 16일 발표",
+   "start": "2026-10-16",
+   "end": "2026-11-13",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316667"
+  },
+  {
+   "src": "알라딘",
+   "title": "악셀 호네트 선집 시리즈 + 접시 매트 또는 책 파우치",
+   "benefit": "사은품: 접시 매트 또는 책 파우치 (택1)",
+   "start": "2026-10-16",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316678",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『수리하는 생활』 + 비하인드 아카이브 북",
+   "benefit": "사은품: 비하인드 아카이브 북 (소진 시까지)",
+   "start": "2026-10-21",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316861",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "2026 노벨문학상 밑줄 긋고 모임까지",
+   "benefit": "노벨문학상 기획 이벤트 (세부 혜택은 링크 확인)",
+   "start": "2026-10-19",
+   "end": "2026-11-08",
+   "url": "https://event.yes24.com/template?EventNo=277276"
+  },
+  {
+   "src": "예스24",
+   "title": "3인 3색, 동화작가에게 무엇이든 물어보세요 (김다노·박현숙·홍민정)",
+   "benefit": "작가에게 질문하는 이벤트 (세부 혜택은 링크 확인)",
+   "start": "2026-10-15",
+   "end": "2026-11-08",
+   "url": "https://event.yes24.com/template?EventNo=277330"
+  },
+  {
+   "src": "예스24",
+   "title": "『2027 우리들의 좋은 날 일력』 출간 기념, 연하장을 그려드려요",
+   "benefit": "출간 기념 연하장 그려 주기 이벤트",
+   "start": "2026-10-13",
+   "end": "2026-11-20",
+   "url": "https://event.yes24.com/template?EventNo=277221"
+  },
+  {
+   "src": "예스24",
+   "title": "[기획전] 한 주제 한 걸음 vol.4: 처음 만나는 경제",
+   "benefit": "경제 입문서 기획전",
+   "start": "2026-10-13",
+   "end": "2026-11-30",
+   "url": "https://event.yes24.com/template?EventNo=277156"
+  },
+  {
+   "src": "예스24",
+   "title": "[기획] 네네의 파이프라인: 조직에서 나답게 일하기",
+   "benefit": "기획전 (세부 혜택은 링크 확인)",
+   "start": "2026-10-14",
+   "end": "2026-11-15",
+   "url": "https://event.yes24.com/template?EventNo=277063"
+  },
+  {
+   "src": "예스24",
+   "title": "[기획전] 이 계절의 그림책: 가을",
+   "benefit": "가을 그림책 기획전",
+   "start": "2026-10-06",
+   "end": "2026-11-09",
+   "url": "https://event.yes24.com/template?EventNo=277025"
+  },
+  {
+   "src": "예스24",
+   "title": "나민애 『오래 곁에 두어 좋은 말』 출간 기념 스틸 단풍 책갈피",
+   "benefit": "사은품: 스틸 단풍 책갈피",
+   "start": "2026-09-21",
+   "end": "2026-12-31",
+   "url": "https://event.yes24.com/template?EventNo=276629",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "[예스24 eBook × 에토프] 2026 노벨문학상 한정판 디지털 굿즈",
+   "benefit": "한정판 디지털 굿즈 증정",
+   "start": "2026-10-08",
+   "end": "2026-11-08",
+   "url": "https://event.yes24.com/template?EventNo=276448",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "『아메리칸 학원』 출간 기념 사철양장노트",
+   "benefit": "사은품: 사철양장노트",
+   "start": "2026-09-29",
+   "end": "2027-01-31",
+   "url": "https://event.yes24.com/template?EventNo=276778",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "『슬로 호시스』 출간 기념 스틸 컬러링 북마크",
+   "benefit": "사은품: 스틸 컬러링 북마크",
+   "start": "2026-08-11",
+   "end": "2026-12-31",
+   "url": "https://event.yes24.com/template?EventNo=275422",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "『팬텀 버스터즈』 네오쇼코 내한 작가 사인회",
+   "benefit": "작가 사인회",
+   "start": "2026-10-19",
+   "end": "2026-10-28",
+   "url": "https://event.yes24.com/template?EventNo=277383"
+  },
+  {
+   "src": "교보문고",
+   "title": "가을의 교양 공부: 2026 교양 모의고사",
+   "benefit": "모의고사 응시 시 e교환권 500원, 2027 도큐먼트×교보문고 논픽션 다이어리 선택 가능",
+   "start": "2026-10-12",
+   "end": "2026-11-20",
+   "url": "https://event.kyobobook.co.kr/detail/249496",
+   "goods": true
+  },
+  {
+   "src": "교보문고",
+   "title": "이달의 책 2026년 10월",
+   "benefit": "북메이트 참여 시 e교환권 500원, 행사도서 포함 3만원 이상 구매 시 버클 양우산 선택 (10월 이벤트, 기간은 링크 확인)",
+   "start": "2026-10-01",
+   "end": "2026-10-31",
+   "url": "https://event.kyobobook.co.kr/detail/249330",
+   "goods": true
+  },
+  {
+   "src": "교보문고",
+   "title": "11월 11일은 무슨 날일까요?",
+   "benefit": "정답을 댓글로 남기는 퀴즈 이벤트",
+   "start": "2026-10-13",
+   "end": "2026-10-27",
+   "url": "https://event.kyobobook.co.kr/detail/249597"
+  },
+  {
+   "src": "교보문고",
+   "title": "sam과 별을 읽는 밤",
+   "benefit": "sam 7 패키지 구매 시 e캐시 증정",
+   "start": "2026-10-06",
+   "end": "2026-11-01",
+   "url": "https://event.kyobobook.co.kr/detail/249486"
+  },
+  {
+   "src": "교보문고",
+   "title": "2026년 북돋움 캐시",
+   "benefit": "교보eBook for Samsung 앱 다운로드 시 최대 1,000 캐시",
+   "start": "2026-10-21",
+   "end": "2026-10-25",
+   "url": "https://event.kyobobook.co.kr/detail/235122"
+  },
+  {
+   "src": "민음사",
+   "title": "[민음북클럽] 우리끼리 독서모임: 홍계월전",
+   "benefit": "독서모임 참여 (10월 31일 모집 마감)",
+   "start": "2026-10-16",
+   "end": "2026-10-31",
+   "url": "https://minumsa.com/event/42048/"
+  },
+  {
+   "src": "민음사",
+   "title": "2026 하반기 온라인 패밀리데이",
+   "benefit": "11월 18일 오전 11시 오픈",
+   "start": "2026-10-13",
+   "end": "2026-11-19",
+   "url": "https://minumsa.com/event/41973/"
+  },
+  {
+   "src": "민음사",
+   "title": "2026 하반기 온라인 패밀리데이 포인트 적립 퀴즈",
+   "benefit": "퀴즈 참여 시 포인트 적립",
+   "start": "2026-10-13",
+   "end": "2026-11-17",
+   "url": "https://minumsa.com/event/41982/"
+  },
+  {
+   "src": "민음사",
+   "title": "2026 하반기 온라인 패밀리데이 기부앤테이크 캠페인",
+   "benefit": "기부 캠페인 참여",
+   "start": "2026-10-13",
+   "end": "2026-11-17",
+   "url": "https://minumsa.com/event/41979/"
   }
  ]
 }
