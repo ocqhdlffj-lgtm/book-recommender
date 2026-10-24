@@ -262,6 +262,7 @@ select{width:100%;border:1px solid var(--line);background:var(--paper);border-ra
   <section id="pane-best" hidden>
     <div class="evbar">
       <div class="chips" id="bestFilter"></div>
+      <label class="status" for="bestWeek">주차 <select id="bestWeek" style="width:auto;display:inline-block"></select></label>
       <span class="status" id="bestCount"></span>
     </div>
     <p class="note" id="bestStale" hidden></p>
@@ -371,7 +372,7 @@ const BEST=/*@BEST*/{};
 const BEST_AGE=Math.round((new Date().setHours(0,0,0,0)-new Date(BEST.asOf+"T00:00:00"))/864e5);
 const BEST_ON=BEST_AGE<=28; /* 집계가 4주 넘게 지나면 점수에 반영하지 않음 */
 const BMAP={};
-BEST.sources.forEach(sr=>sr.items.forEach(([rank,t,a,p,shelf])=>{if(shelf)(BMAP[shelf]=BMAP[shelf]||[]).push({src:sr.name,rank})}));
+BEST.weeks[0].sources.forEach(sr=>sr.items.forEach(([rank,t,a,p,shelf])=>{if(shelf)(BMAP[shelf]=BMAP[shelf]||[]).push({src:sr.name,rank})})); /* 점수에는 최신 주차만 */
 const bestPts=r=>r<=10?2:r<=30?1.5:1;
 const bestOf=title=>{const l=BMAP[title];return l?{pts:Math.min(4,l.reduce((s,x)=>s+bestPts(x.rank),0)),label:"주간 베스트 · "+l.map(x=>`${x.src} ${x.rank}위`).join(", ")}:null};
 /* 밀리의서재: 책 페이지에서 확인한 전자책 서비스 상태 (s: ok/no/unk) */
@@ -493,22 +494,27 @@ function renderEvents(){
 $("evFilter").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;evSrc=b.dataset.s;try{localStorage.setItem("seonghyang-ev",evSrc)}catch(_){}renderEvents()});
 
 /* Weekly bestsellers */
-let bestSrc=BEST.sources[0].name;
+let bestSrc=BEST.weeks[0].sources[0].name,bestWk=0;
 function renderBest(){
-  $("bestFilter").innerHTML=BEST.sources.map(sr=>`<button type="button" class="chip" data-s="${esc(sr.name)}" aria-pressed="${sr.name===bestSrc}">${esc(sr.name)}</button>`).join("");
-  $("bestFilter").hidden=BEST.sources.length<2;
-  const sr=BEST.sources.find(x=>x.name===bestSrc)||BEST.sources[0];
+  const W=BEST.weeks[bestWk];
+  $("bestWeek").innerHTML=BEST.weeks.map((w,i)=>`<option value="${i}"${i===bestWk?" selected":""}>${esc(w.label)}${i===0?" (최신)":""}</option>`).join("");
+  if(!W.sources.some(x=>x.name===bestSrc))bestSrc=W.sources[0].name;
+  $("bestFilter").innerHTML=W.sources.map(sr=>`<button type="button" class="chip" data-s="${esc(sr.name)}" aria-pressed="${sr.name===bestSrc}">${esc(sr.name)}</button>`).join("");
+  $("bestFilter").hidden=W.sources.length<2;
+  const sr=W.sources.find(x=>x.name===bestSrc);
   const items=sr.items.filter(i=>i[0]<=30);
-  $("bestCount").textContent=`${sr.period} · 상위 ${items.length}종`;
-  const st=$("bestStale");st.hidden=BEST_AGE<=7;
-  if(!st.hidden)st.textContent=BEST_ON?`이 순위는 ${BEST_AGE}일 전 집계예요. 최신 순위는 서점 페이지에서 확인하세요.`:`이 순위는 ${BEST_AGE}일 전 집계라 추천 점수에는 반영하지 않았어요.`;
+  $("bestCount").textContent=`${W.label} · ${sr.period} · 상위 ${items.length}종`;
+  const st=$("bestStale");const age=Math.round((new Date().setHours(0,0,0,0)-new Date(W.asOf+"T00:00:00"))/864e5);
+  st.hidden=bestWk!==0||age<=7;
+  if(!st.hidden)st.textContent=BEST_ON?`이 순위는 ${age}일 전 집계예요. 최신 순위는 서점 페이지에서 확인하세요.`:`이 순위는 ${age}일 전 집계라 추천 점수에는 반영하지 않았어요.`;
   $("bestList").innerHTML=items.map(([rank,t,a,p,shelf])=>{
     const q=encodeURIComponent(t);
-    return `<div class="ev"><div class="due ${rank<=3?"":"long"}"><small>주간</small><b>${rank}위</b></div>
+    return `<div class="ev"><div class="due ${rank<=3?"":"long"}"><small>${esc(W.label.replace("차",""))}</small><b>${rank}위</b></div>
     <div><h4>${shelf?`<span class="tag hit">서가에 있음</span> `:""}${esc(t)}</h4><p>${esc(a)}${p?" · "+esc(p):""}</p></div>
     <a class="go" href="https://search.kyobobook.co.kr/search?keyword=${q}" target="_blank" rel="noopener">교보 검색 →</a></div>`}).join("");
 }
 $("bestFilter").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;bestSrc=b.dataset.s;renderBest()});
+$("bestWeek").addEventListener("change",()=>{bestWk=+$("bestWeek").value;renderBest()});
 
 /* Tabs */
 function showTab(t){

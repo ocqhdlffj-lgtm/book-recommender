@@ -62,7 +62,9 @@ def load_best(books):
     d = json.loads((ROOT/"data/bestsellers.json").read_text(encoding="utf-8"))
     shelf = {_n(b["t"]): b["t"] for b in books}
     bmap = {}
-    for sr in d["sources"]:
+    assert d["weeks"], "bestsellers.json: weeks 비어 있음"
+    for wi, wk in enumerate(d["weeks"]):
+      for sr in wk["sources"]:
         seen = set()
         for it in sr["items"]:
             assert len(it) == 4 and isinstance(it[0], int), f"bestsellers.json: 형식 오류 {it}"
@@ -72,7 +74,7 @@ def load_best(books):
             head = _n(re.split(r"\s*:\s*", it[1])[0])  # "군주론 : 쇼츠 에디션" 같은 부제 제거
             hit = shelf.get(nt) or shelf.get(head) or next((st for k, st in shelf.items() if len(k) >= 6 and k in nt), None)
             it.append(hit or "")
-            if hit: bmap.setdefault(hit, []).append((sr["name"], it[0]))
+            if hit and wi == 0: bmap.setdefault(hit, []).append((sr["name"], it[0]))  # 점수에는 최신 주차만
     return d, bmap
 
 def best_pts(rank):
@@ -82,8 +84,9 @@ def best_label(lst):
     return "주간 베스트 · " + ", ".join(f"{s} {r}위" for s, r in lst)
 
 def ns_best(d):
-    out = ['<div class="sechead"><h3>주간 베스트</h3><span class="status">상위 30위 · 서가에 있는 책은 표시돼요</span></div>']
-    for sr in d["sources"]:
+    wk = d["weeks"][0]
+    out = [f'<div class="sechead"><h3>주간 베스트 · {wk["label"]}</h3><span class="status">상위 30위 · 지난 주차는 스크립트가 도는 화면에서 볼 수 있어요</span></div>']
+    for sr in wk["sources"]:
         badge = '<span class="tag hit">서가에 있음</span> '
         rows = "".join(
             f'<div class="ev"><div class="due {"" if r <= 3 else "long"}"><small>주간</small><b>{r}위</b></div>'
@@ -154,7 +157,7 @@ def main():
     evjs = "\n".join(json.dumps([e["src"],e["title"],e["benefit"],e["start"],e["end"],e["url"],1 if e.get("goods") else 0], ensure_ascii=False, separators=(",",":"))+"," for e in ev["events"])
     t = t.replace("/*@EVENTS*/[\n", "[\n" + evjs.rstrip(",") + "\n")
     t = t.replace("/*@GUIDES*/", "\n".join(g["raw"] for g in guides.values()))
-    t = t.replace("/*@BEST*/{}", json.dumps({"asOf": best["asOf"], "sources": [{"name": s["name"], "period": s["period"], "items": s["items"]} for s in best["sources"]]}, ensure_ascii=False, separators=(",", ":")))
+    t = t.replace("/*@BEST*/{}", json.dumps({"asOf": best["weeks"][0]["asOf"], "weeks": [{"id": w["id"], "label": w["label"], "asOf": w["asOf"], "sources": [{"name": s["name"], "period": s["period"], "items": s["items"]} for s in w["sources"]]} for w in best["weeks"]]}, ensure_ascii=False, separators=(",", ":")))
     t = t.replace("@@NS_BEST@@", ns_best(best))
     t = t.replace("@@BEST_NOTE@@", escape(best["note"]))
     t = t.replace("/*@MILLIE*/{}", json.dumps(millie["books"], ensure_ascii=False, separators=(",", ":")))

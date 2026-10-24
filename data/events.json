@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-21",
+ "asOf": "2026-10-24",
  "events": [
   {
    "src": "알라딘",
@@ -406,7 +406,7 @@
    "title": "2026 노벨문학상 앤 카슨 수상 기념",
    "benefit": "2027 캘린더, 미니 북파우치 키링, 연록 끈갈피 증정",
    "start": "2026-10-08",
-   "end": "2026-10-30",
+   "end": "2026-11-30",
    "url": "https://event.yes24.com/template?EventNo=276871",
    "goods": true
   },
@@ -867,6 +867,302 @@
    "start": "2026-10-13",
    "end": "2026-11-17",
    "url": "https://minumsa.com/event/41979/"
+  },
+  {
+   "src": "알라딘",
+   "title": "무라카미 류 작가에게 작별인사를 남겨주세요",
+   "benefit": "작별 인사 남기기 이벤트",
+   "start": "2026-10-23",
+   "end": "2026-11-22",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317041"
+  },
+  {
+   "src": "알라딘",
+   "title": "『환상 공동체』 출간 기념 맹미선×이승연×김지효 북토크",
+   "benefit": "11월 25일(수) 오후 7시 북토크 참여 신청",
+   "start": "2026-10-23",
+   "end": "2026-11-20",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317028"
+  },
+  {
+   "src": "알라딘",
+   "title": "[북펀드] 전력을 다했을 때 보이는 것",
+   "benefit": "북펀드 참여",
+   "start": "2026-10-23",
+   "end": "2026-11-08",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317020"
+  },
+  {
+   "src": "알라딘",
+   "title": "[북펀드] 무료인 줄 알았는데 저작권에 걸린다고?",
+   "benefit": "북펀드 참여",
+   "start": "2026-10-23",
+   "end": "2026-11-08",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317019"
+  },
+  {
+   "src": "알라딘",
+   "title": "[북펀드] 옥희와 상열",
+   "benefit": "북펀드 참여",
+   "start": "2026-10-22",
+   "end": "2026-11-03",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316952"
+  },
+  {
+   "src": "알라딘",
+   "title": "[북펀드] 충분해 귤귤",
+   "benefit": "북펀드 참여",
+   "start": "2026-10-22",
+   "end": "2026-11-01",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316911"
+  },
+  {
+   "src": "알라딘",
+   "title": "『세계사를 바꾼 그날』 + 저자 4인 친필 사인 인쇄본",
+   "benefit": "저자 4인 친필 사인 인쇄본 증정 (조건은 링크 확인)",
+   "start": "2026-10-23",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317004"
+  },
+  {
+   "src": "알라딘",
+   "title": "『153 감사노트』 시리즈 + 투썸플레이스 아메리카노 기프티콘 추첨",
+   "benefit": "기프티콘 추첨, 12월 7일 발표",
+   "start": "2026-10-23",
+   "end": "2026-11-30",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317001"
+  },
+  {
+   "src": "알라딘",
+   "title": "『결과를 알기에 두렵지 않습니다』 + 투썸플레이스 아메리카노 기프티콘 추첨",
+   "benefit": "기프티콘 추첨, 12월 7일 발표",
+   "start": "2026-10-23",
+   "end": "2026-11-30",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317000"
+  },
+  {
+   "src": "알라딘",
+   "title": "『10대를 위한 완벽에 대한 반론』 + 완벽에 대한 철학 노트",
+   "benefit": "사은품: 철학 노트 (소진 시까지)",
+   "start": "2026-10-23",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316999",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『다이브 인』 + 유영은 뉴페이스북",
+   "benefit": "사은품: 유영은 뉴페이스북 (소진 시까지)",
+   "start": "2026-10-22",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316997",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『그대, 별처럼』 한줄평 + 영화 예매권 추첨",
+   "benefit": "영화 예매권 추첨, 11월 2일 발표",
+   "start": "2026-10-22",
+   "end": "2026-10-30",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316995"
+  },
+  {
+   "src": "알라딘",
+   "title": "『곰돌이 푸, 이야기의 시작』 + 곰돌이 푸 요거트볼",
+   "benefit": "사은품: 곰돌이 푸 요거트볼 (소진 시까지)",
+   "start": "2026-10-22",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316972",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『배탈』 박서영×이시내 북토크",
+   "benefit": "11월 7일(토) 오후 1시 북토크 참여 신청",
+   "start": "2026-10-22",
+   "end": "2026-11-06",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316965"
+  },
+  {
+   "src": "알라딘",
+   "title": "『어린이 삼국지 7』 + 삼국지 영웅 포토카드·탑로더",
+   "benefit": "사은품: 삼국지 영웅 포토카드, 탑로더 (소진 시까지)",
+   "start": "2026-10-22",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316961",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『어과동/어수동』 21호 + 3천원 할인쿠폰(전원)·과학VS미스터리 1권(추첨)",
+   "benefit": "전원 3천원 할인쿠폰, 추첨으로 책 1권, 11월 27일 발표",
+   "start": "2026-10-22",
+   "end": "2026-11-27",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316957"
+  },
+  {
+   "src": "알라딘",
+   "title": "『엄지 중독』 + 안전지대 실전편 소책자",
+   "benefit": "사은품: 안전지대 실전편 소책자 (소진 시까지)",
+   "start": "2026-10-22",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316953",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『나를 바꾸는 15분 필사』 + 100일 완성 해빗트래커",
+   "benefit": "사은품: 100일 완성 해빗트래커 (소진 시까지)",
+   "start": "2026-10-22",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316939",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『팝업 도시』 박미연 신간 알림·기대평 + 1천원 적립금",
+   "benefit": "추첨으로 적립금 1천 원, 11월 20일 발표",
+   "start": "2026-10-21",
+   "end": "2026-11-18",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316932"
+  },
+  {
+   "src": "알라딘",
+   "title": "『코어 멘탈』 벤저민 하디 신간 알림·기대평 + 1천원 적립금",
+   "benefit": "추첨으로 적립금 1천 원, 11월 9일 발표",
+   "start": "2026-10-21",
+   "end": "2026-11-08",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316919"
+  },
+  {
+   "src": "알라딘",
+   "title": "『초(超)기초 독학 일본어 첫걸음』 + 여권 파우치",
+   "benefit": "사은품: 여권 파우치(색상 랜덤, 조건은 링크 확인)",
+   "start": "2026-10-21",
+   "end": "2027-01-21",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316914",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "할로윈 밤, 시공사 만화 브랜드전",
+   "benefit": "적립금 1천 원 추첨",
+   "start": "2026-10-21",
+   "end": "2026-11-02",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316885"
+  },
+  {
+   "src": "알라딘",
+   "title": "『네가 나를 떠나면』 + 2구 키캡 키링",
+   "benefit": "사은품: 2구 키캡 키링 (소진 시까지)",
+   "start": "2026-10-21",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316877",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『도도클럽』 시리즈 + 비아·도림·소이 삼총사 일러스트 책갈피",
+   "benefit": "사은품: 일러스트 책갈피 (소진 시까지)",
+   "start": "2026-10-23",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317045",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『웃기는 우주과학 코스모스웩 3』 + 지구 마그넷",
+   "benefit": "사은품: 지구 마그넷 (소진 시까지)",
+   "start": "2026-10-23",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317005",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『내가 크고 있는지 궁금해』 포함 국내도서 2만원 이상 + 접이식 장난감 정리함",
+   "benefit": "사은품: 접이식 장난감 정리함 (소진 시까지)",
+   "start": "2026-10-23",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317066",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "『신묘한 우리 동네 동물병원』 신간 알림 + 적립금 1,000원 추첨",
+   "benefit": "추첨으로 적립금 1천 원, 11월 25일 발표",
+   "start": "2026-10-23",
+   "end": "2026-11-24",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=317065"
+  },
+  {
+   "src": "알라딘",
+   "title": "『Go Go 카카오프렌즈 과학탐구 1』 + 프렌즈 라운드 메모지",
+   "benefit": "사은품: 프렌즈 라운드 메모지 (소진 시까지)",
+   "start": "2026-10-21",
+   "end": "",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316895",
+   "goods": true
+  },
+  {
+   "src": "알라딘",
+   "title": "길벗스쿨 『기적의 계산법』 + 2027년 포스터 캘린더",
+   "benefit": "사은품: 2027년 포스터 캘린더 (조건은 링크 확인)",
+   "start": "2026-10-21",
+   "end": "2026-12-31",
+   "url": "https://www.aladin.co.kr/events/wevent.aspx?EventId=316928",
+   "goods": true
+  },
+  {
+   "src": "예스24",
+   "title": "[2026 Vol.10] 어린이, 지금 이 책 좋은 책의 발견: 화제의 신간 & 어린이 베스트",
+   "benefit": "어린이 신간·베스트 기획전",
+   "start": "2026-10-21",
+   "end": "2026-11-20",
+   "url": "https://event.yes24.com/template?EventNo=277509"
+  },
+  {
+   "src": "교보문고",
+   "title": "[기획/e교환권] AI 시대, 진짜 독서 프로젝트",
+   "benefit": "독서 다짐을 남기면 e교환권 1천 원",
+   "start": "2026-10-22",
+   "end": "2026-11-30",
+   "url": "https://event.kyobobook.co.kr/detail/249772"
+  },
+  {
+   "src": "교보문고",
+   "title": "읽는 사람의 하루, 취향이 머무는 장면",
+   "benefit": "편집자 이연실의 일상을 채우는 물건들 기획 (핫트랙스)",
+   "start": "2026-10-21",
+   "end": "2026-11-30",
+   "url": "https://event.kyobobook.co.kr/detail/249252",
+   "goods": true
+  },
+  {
+   "src": "교보문고",
+   "title": "읽을 책 고를 땐 <트렌드+>",
+   "benefit": "트렌드+를 써 보면 1천 원 e교환권 추첨",
+   "start": "2026-09-21",
+   "end": "2026-11-03",
+   "url": "https://event.kyobobook.co.kr/detail/249202"
+  },
+  {
+   "src": "민음사",
+   "title": "[동네서점 전용] 민음의 시 전용 북커버 10월 27일 출시",
+   "benefit": "동네서점 전용 굿즈 (세부 조건은 링크 확인)",
+   "start": "2026-10-22",
+   "end": "2026-11-30",
+   "url": "https://minumsa.com/event/42065/",
+   "goods": true
+  },
+  {
+   "src": "민음사",
+   "title": "[동네서점 전용] 『우리는 사랑에 어설펐던 귀신이라고』 미니북 10월 27일 출시",
+   "benefit": "동네서점 전용 미니북 (세부 조건은 링크 확인)",
+   "start": "2026-10-22",
+   "end": "2026-11-30",
+   "url": "https://minumsa.com/event/42060/",
+   "goods": true
   }
  ]
 }
